@@ -1,0 +1,50 @@
+Frontend:
+
+Used vite (wheat) - it is a build tool, that sets up our development environment. 
+It is an alternative to "npx create-react-app" style of creating a project.
+It uses HMR - Hot module replacement -> every change in the code will reflect the changes in the 
+web app instantly without refrreshing.
+
+Imported css code from external websites since main focus was on the components part and not styling.
+
+Home page - return the images that were searched or created previously. If not no images is shown.
+
+We have somehting called prompts in our app. It is a 50 predefined hardcoded strings 
+that will help user to develop a random image in case they don't have any ideas.
+It will randomly select a string and create an image based on it.
+The random strings are present in the src/constants.index.js file.
+
+assets- has images for the image preivew, logo of our webiste on top left etc.
+components - 
+        In create page, each field ie) Name, Prompt both are a FormField component.
+        Each has it own props like, type, name, palceholder etc.
+
+        For prompt field, we send an variable issupriseme as a prop, so that while rendering we 
+        can see the button to generate random prompt. Because the name field uses the same comp,
+        but it should not display the button. That's why we use issupriseme while rendering form 
+        component.
+
+        we pass two functions as handler events.
+        1) handleChange - whenever user types someting on the name or prompt field,
+        we immediately set the state of the form using setForm useState in handleChange event.
+         The ...form means keep all the properites of the state. And followed by the changes that has been currently made.
+         [event.target.name]:event.target.value => will update the form which has key as event.target.name to event.target.value, which is
+         the value entered by the user.
+
+        2) handleSupriseMe - on clicking the suprise me button, this will get called and using random func generator, a random index is called
+        from 0 to 50 (see index.js of constant folder) for the index of the random prompt string.
+
+pages - 
+    1) CreatePost:
+
+        This will have the form field which will have FormField components for name, prompt.
+        And image generation area. Approporiate event handlers are defined here that will be sent as props to FormField.
+
+       const [generatingImage, setGeneratingImage] = useState(false); - State variable initially false. Used when image is being generated, a loding component will be 
+        displayed to the user to notify them that the image is being generated.
+
+        const [form, setForm] = useState({
+    name: '',
+    prompt: '',           // the sting that user wants to create an image of.
+    photo: ''
+  }) => Initial state of the form
