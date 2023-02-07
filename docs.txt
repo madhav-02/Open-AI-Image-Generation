@@ -48,3 +48,27 @@ pages -
     prompt: '',           // the sting that user wants to create an image of.
     photo: ''
   }) => Initial state of the form
+
+
+
+
+
+
+
+
+
+
+  BACKEND:
+    
+    link for the OpenAI documentation for creating an image- https://platform.openai.com/docs/api-reference/images/create
+    While testing the create image in postman or ThunderCLient - paste the api key in the auth section
+
+  IN the backend, we have two routes:
+  1) dalleRoutes (dalle - name of the neural network that the model was trained upon).
+      This route is used for handling the generation of API task. It has a post route.
+      The only thing that is required from the user is - prompt - the string based on which img is generated.
+      The structure of the request is mentioned in their documentation.
+
+      In the frontend, in ceatepost.jsx file we request using the fetch command in the 
+      generateImage handler.
+      
