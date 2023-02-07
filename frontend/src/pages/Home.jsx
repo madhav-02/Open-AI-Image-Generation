@@ -4,7 +4,7 @@ import { Form } from 'react-router-dom';
 import {Card, Loader, FormField} from "../components"
 
 const RenderCards = ({data, title}) => {       // This is a func component with props data,title
-  if(data.length > 0 ){
+  if(data && data.length > 0 ){
     return data.map((post) => <Card key={post._id} {...post}/>);
   }
 
@@ -16,6 +16,33 @@ const Home = () => {
   const [loading,setLoading] = useState(false);     // for the loading component
   const [posts, setPosts] = useState(null);        // For user generated post previosuly
   const [searchText, setSearchText] = useState('')
+
+  useEffect(()=>{
+
+    const fetchPosts = async ()=>{
+        setLoading(true);
+        try{
+            const options = {
+              method:"GET",
+              headers:{
+                'Content-Type':'application/json'
+              }
+            }
+            const response = await fetch("http://localhost:8000/api/v1/post",options);
+            if(response.ok){
+              const result = await response.json();
+              setPosts(result.data.reverse()); // reverse because we want newest ones first.
+            }
+
+        }catch(err){
+            console.log("Error : ",err);
+            alert(err);
+        }finally{
+          setLoading(false);
+        }
+    }
+    fetchPosts();
+  },[]);
   return (
       <section className="max-w-7xl mx-auto ">
           <div>
@@ -55,7 +82,7 @@ const Home = () => {
                             ) :
                             (
                               <RenderCards
-                                data = {[]}
+                                data = {posts}
                                 title = "No posts found."
                               />
                             )

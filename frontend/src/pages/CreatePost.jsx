@@ -14,8 +14,30 @@ const CreatePost = () => {
   const [generatingImage, setGeneratingImage] = useState(false);
   const [loading, setLoading] = useState(false);
   
-  const handleSubmit = ()=> {
-
+  const handleSubmit = async (e)=> {         // Since we have given the type of button as "submit" for the Share with community button as it comes with the form, this handler will take care of it.
+    e.preventDefault();
+    if(form.name && form.prompt && form.photo){
+      setLoading(true);
+      try{
+        const options={
+          method:"POST",
+          headers:{
+            'Content-Type':'application/json'
+          },
+          body: JSON.stringify(form)
+        }
+          const response = await fetch("http://localhost:8000/api/v1/post",options);
+          await response.json();
+          navigate("/");
+      }catch(err){
+          alert(err);
+      }finally{
+        setLoading(false);
+      }
+    }
+    else{
+        alert('Please enter all the details')
+    }
   }
   const handleChange = (event)=> {
     setForm({...form, [event.target.name]:event.target.value}) // THis wont work if no [] around event.traget.name => this .name has been defined in the FormField component down.

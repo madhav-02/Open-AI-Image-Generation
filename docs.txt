@@ -71,4 +71,20 @@ pages -
 
       In the frontend, in ceatepost.jsx file we request using the fetch command in the 
       generateImage handler.
+
+
+  2) postRoutes:
+
+
+
+
+
+  We have used cloudinary - it is a cloud platform to upload images and videos and store them.
+  Also it can give us the link to the stored images that can be retrieved later.
+
+  So we are basically generating images using the OpenAI's Dalle neural network.
+  And that image is uploaded to the cloudinary cloud using their api.
+  Now it stores the image and generates a link to access it. 
+  Now we store this link of that image created along with username and prompt entered in the MongoDb databse.
+  
       
