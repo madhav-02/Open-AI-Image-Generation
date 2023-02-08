@@ -15,8 +15,24 @@ const RenderCards = ({data, title}) => {       // This is a func component with 
 const Home = () => {
   const [loading,setLoading] = useState(false);     // for the loading component
   const [posts, setPosts] = useState(null);        // For user generated post previosuly
-  const [searchText, setSearchText] = useState('')
-
+  const [searchText, setSearchText] = useState('') // For filetering images.
+  const [searchedPosts,setSearchedPosts] = useState(null);
+  const handleSearchChange = (event) => {
+    setSearchText(event.target.value);
+    setTimeout(()=>{
+        const searchResults = posts.filter((post)=>{
+          return post.name.toLowerCase().includes(searchText.toLowerCase())   || post.prompt.toLowerCase().includes(searchText.toLowerCase());
+        });
+        console.log("Resutls are: ",searchResults);
+        setSearchedPosts(searchResults);
+    },500);
+    // const searchResults = posts.filter((post)=>{
+    //   return post.name.toLowerCase().includes(searchText.toLowerCase())   || post.prompt.toLowerCase().includes(searchText.toLowerCase());
+    // });
+    // console.log("Resutls are: ",searchResults);
+    // setSearchedPosts(searchResults);
+   
+  }
   useEffect(()=>{
 
     const fetchPosts = async ()=>{
@@ -55,7 +71,7 @@ const Home = () => {
           </div>
 
           <div className="mt-16">
-              <FormField />
+              <FormField labelName="Search Posts" type="text" name="text" placeholder="Search Posts" value={searchText} handleChange={handleSearchChange} />
           </div>
 
           <div className="mt-10">   
@@ -76,7 +92,7 @@ const Home = () => {
                           {
                             searchText ? (
                               <RenderCards 
-                                data = {[]}
+                                data = {searchedPosts}
                                 title = "No search results found."
                               />
                             ) :
