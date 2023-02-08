@@ -1,4 +1,4 @@
-Frontend:
+FRONTEND:
 
 Used vite (wheat) - it is a build tool, that sets up our development environment. 
 It is an alternative to "npx create-react-app" style of creating a project.
@@ -60,6 +60,8 @@ pages -
 
 
 
+cd to frontend and - npm run dev
+
 Each and every form field like search post filter in home page, username and prompt filed in create page belongs to the same component - FormField.
 We are resuing the same FormField  component in different places.
 
@@ -109,3 +111,5 @@ We are resuing the same FormField  component in different places.
   Now we store this link of that image created along with username and prompt entered in the MongoDb databse.
   
       
+
+      cd to backend/ and - npm start
