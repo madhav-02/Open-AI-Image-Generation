@@ -127,7 +127,7 @@ const CreatePost = () => {
               <div className="mt-10">
                 <p className='mt-2 text-[#000102] text-[15px]'>Once created, you can share this with the community.</p>
                 <button type="submit" className='mt-3 text-white bg-[#e0841b] font-medium rounded-md  w-full sm:w-auto px-5 py-2..5 text-center'>
-                      Share with community
+                      Showcase it to World!
                 </button>
               </div>
           </form>

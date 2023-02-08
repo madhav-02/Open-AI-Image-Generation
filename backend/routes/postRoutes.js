@@ -15,7 +15,7 @@ cloudinary.config({
   });
 
 
-// Get all the posts from cloudinary.
+// Get all the posts from MongoDB.
 router.get("/", async (req,res)=>{
     try{
         const posts = await Post.find({});
@@ -28,7 +28,7 @@ router.get("/", async (req,res)=>{
 
 
 
-// Put a post into the cloudinary cloud.
+// Put a post into the cloudinary cloud and save it in MONGODB.
 router.post("/", async (req,res)=>{
     try{
         const {name, prompt, photo} = req.body;

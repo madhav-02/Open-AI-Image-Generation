@@ -9,7 +9,7 @@ Imported css code from external websites since main focus was on the components 
 
 Home page - return the images that were searched or created previously. If not no images is shown.
 
-We have somehting called prompts in our app. It is a 50 predefined hardcoded strings 
+We have somehting called "prompts" in our app. It is a 50 predefined hardcoded STRINGS 
 that will help user to develop a random image in case they don't have any ideas.
 It will randomly select a string and create an image based on it.
 The random strings are present in the src/constants.index.js file.
@@ -50,8 +50,18 @@ pages -
   }) => Initial state of the form
 
 
+    While clicking the Showcase it to the WOrld button, the images gets added to the DB and it will be with all\
+    other posts created previosuly.
+    It will automatically redirect to the HOME PAGE.
+
+  2) Home: It will be the home for all the posts that were create dpreviously. It also includes a search by username or prompt field,
+  that will filter posts based on username or prompt. The most recent one is the largest image that is shown.
 
 
+
+
+Each and every form field like search post filter in home page, username and prompt filed in create page belongs to the same component - FormField.
+We are resuing the same FormField  component in different places.
 
 
 
@@ -74,7 +84,18 @@ pages -
 
 
   2) postRoutes:
+    This route is responsible for adding the AI generated image and store in the cloudinary as well as our
+    MONGODB database.
+    there are two endpoints here.
+    1) get (/) hat will fetch all the posts saved from mongoDB.
+    2) post(/) that will take the image generated, upload it to the cloudinary platform
+    through its function(cloudinary.uploader.upload).
+    This will return the photoURL of the imaeg stored there.
 
+    So in the mongoDB we store the {name,prompt,photoURL}.
+    name- name of the user.
+    prompt - prompt entered by the user for the image
+    phototURL- url of the image.
 
 
 
