@@ -114,4 +114,6 @@ We are resuing the same FormField  component in different places.
 
       cd to backend/ and - npm start
 
+      To login to Open AI - used 007 gmail acct. 669 was used previously but API limit got maxed.
+
       To check the database contents- sign in to mongodb atlas platform. Use 007 gmail acct. In ur cluster, under database section, see browse collections. The db name is OpenAI-Image
