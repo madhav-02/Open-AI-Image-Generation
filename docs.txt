@@ -117,3 +117,9 @@ We are resuing the same FormField  component in different places.
       To login to Open AI - used 007 gmail acct. 669 was used previously but API limit got maxed.
 
       To check the database contents- sign in to mongodb atlas platform. Use 007 gmail acct. In ur cluster, under database section, see browse collections. The db name is OpenAI-Image
+
+HOSTING:
+
+To view the application - Visit - https://glowing-speculoos-d4a45a.netlify.app/
+Backend hosted at Render (Website hosting plaform) - Login using github account. 
+Frontend Hosted at Netlify - Login using Github account.
