@@ -44,7 +44,7 @@ const Home = () => {
                 'Content-Type':'application/json'
               }
             }
-            const response = await fetch("http://localhost:8000/api/v1/post",options);
+            const response = await fetch("https://openai-image-generation-tool.onrender.com/api/v1/post",options);
             if(response.ok){
               const result = await response.json();
               setPosts(result.data.reverse()); // reverse because we want newest ones first.

@@ -26,7 +26,7 @@ const CreatePost = () => {
           },
           body: JSON.stringify(form)
         }
-          const response = await fetch("http://localhost:8000/api/v1/post",options);
+          const response = await fetch("https://openai-image-generation-tool.onrender.com/api/v1/post",options);
           await response.json();
           navigate("/");
       }catch(err){
@@ -57,7 +57,7 @@ const CreatePost = () => {
             },
             body: JSON.stringify({prompt:form.prompt})
           }
-          const response = await fetch("http://localhost:8000/api/v1/dalle",options);
+          const response = await fetch("https://openai-image-generation-tool.onrender.com/api/v1/dalle",options);
           const data = await response.json();
           // console.log("I am hereeeeeeee ",data);
           setForm({...form, photo:`data:image/jpeg;base64,${data.photo}`})
